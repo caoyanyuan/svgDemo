@@ -1,0 +1,27 @@
+<?xml version="1.0" standalone="no"?>
+
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+
+<svg width="400px" height="400px" version="1.1" xmlns="http://www.w3.org/2000/svg">
+
+
+
+<!-- <rect x="200" y="200" width="100" height="100" rx="20" ry="50"></rect> -->
+<!-- <g stroke="black" stroke-width="2" fill="transparent" transform="translate(200,200)">
+	<circle r="100" />
+	<circle r="50" />
+	<circle r="30" />
+	<circle r="10" />
+</g>
+ -->
+<circle cx="100" cy="100" r="30" stroke="black" stroke-width="2" fill="transparent"/>
+
+<circle cx="200" cy="200" r="50" stroke="black" stroke-width="2" fill="transparent"/>
+<text x="200" y="208" text-anchor="middle" font-size="20">who</text>
+
+<line x1="100" y1="100" x2="200" y2="200" style="stroke:rgb(99,99,99);stroke-width:2"/>
+<text x="150" y="158" text-anchor="middle" font-size="20" style="background:#ccc">?</text>
+
+</svg>
+
+
