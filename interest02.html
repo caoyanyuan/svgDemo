@@ -2,10 +2,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>兴趣图片</title>
+<title>兴趣图谱</title>
 <style>
-#box{ width:780px; height:400px; background:url(img/bg.jpg) no-repeat; margin:20px auto; overflow:hidden;}
-body{ background:black;}
+#box{ width:780px; height:400px;  margin:20px auto; overflow:hidden;}
+
 </style>
 </head>
 <script type="text/javascript">
@@ -40,15 +40,15 @@ window.onload = function(){
 		}	
 		return oTag;	
 	}
+
+	var oSvg = createTag('svg', {'xmlns':svgNS, 'width':'100%', 'height':'100%'});
+	oParent.appendChild(oSvg);
 	
-	function addTag(){
-		
-		var oSvg = createTag('svg',{'xmlns':svgNS,'width':'100%','height':'100%'});
-		
-		for(var i=0;i<data.otherNode.length;i++){
-			addOtherTag( data.otherNode[i] , oSvg );
+	function addTag() {
+		for(var i=0; i<data.otherNode.length; i++){
+			addOtherTag(data.otherNode[i])
 		}
-		
+
 		var oG = createTag('g',{'style':'cursor:pointer'});
 		var oCircle = createTag('circle',{'cx':centerX,'cy':centerY,'r':'60','fill':'white','stroke':'red','stroke-width':'1'});
 		var oText = createTag('text',{'x':centerX,'y':centerY+8,'font-size':'20','text-anchor':'middle'});
@@ -56,42 +56,34 @@ window.onload = function(){
 		
 		oG.appendChild(oCircle);
 		oG.appendChild(oText);
-		
 		oSvg.appendChild(oG);
-		oParent.appendChild(oSvg);
+
 	}
-	
+
 	addTag();
-	
-	function addOtherTag(otherAttr , oSvg){
+
+	function addOtherTag(otherAttr) {
+		var oG = createTag('g', {'style':'cursor:pointer'});
+		var oCircle = createTag('circle', {'cx':otherAttr.x, 'cy':otherAttr.y, 'r':40, 'fill':'white', 'stroke':'red', 'stroke-width':'1'});
+		var oText = createTag('text', {'x':otherAttr.x, 'y':otherAttr.y+8,'font-size':'20','text-anchor':'middle'});
+		oText.innerHTML = otherAttr.text;
 		
-		var oG = createTag('g',{'style':'cursor:pointer'});
-		var oLine1 = createTag('line',{'x1':otherAttr.x,'y1':otherAttr.y,'x2':centerX,'y2':centerY,'stroke':'#ccc'});
-		var oLine2 = createTag('line',{'x1':otherAttr.x,'y1':otherAttr.y,'x2':centerX,'y2':centerY,'stroke':'transparent','stroke-width':'10'});
-		var oRect = createTag('rect',{'x': (otherAttr.x + centerX)/2 - 10 ,'y': (otherAttr.y + centerY)/2 - 10 ,'fill':'#999','width':'20','height':'20','rx':'5'});
-		var oText = createTag('text',{'x':(otherAttr.x + centerX)/2,'y':(otherAttr.y + centerY)/2 + 8,'fill':'white','font-size':'20','text-anchor':'middle'});
-		oText.innerHTML = '?';
-		
+		var oLine1 = createTag('line', {'x1':centerX, 'y1':centerY, 'x2':otherAttr.x, 'y2':otherAttr.y,'stroke':'#ccc'});
+		var oLine2 = createTag('line', {'x1':centerX, 'y1':centerY, 'x2':otherAttr.x, 'y2':otherAttr.y,'stroke':'transparent', 'stroke-width':'10'});
+		var oRect = createTag('rect', {'x':(otherAttr.x+centerX)/2 - 10, 'y':(otherAttr.y+centerY)/2 - 10, 'width':20,'height':20,'fill':'#999'});
+		var oText2 = createTag('text',{'x':(otherAttr.x+centerX)/2, 'y':(otherAttr.y+centerY)/2+8,'font-size':'20','text-anchor':'middle', 'fill':'#fff'})
+		oText2.innerHTML = '?';
+
 		oG.appendChild(oLine1);
 		oG.appendChild(oLine2);
 		oG.appendChild(oRect);
-		oG.appendChild(oText);
-		
-		oSvg.appendChild(oG);
-		
-		
-		var oG = createTag('g',{'style':'cursor:pointer'});
-		var oCircle = createTag('circle',{'cx':otherAttr.x,'cy':otherAttr.y,'r':'40','fill':'white','stroke':'red','stroke-width':'1'});
-		var oText = createTag('text',{'x':otherAttr.x,'y':otherAttr.y+8,'font-size':'20','text-anchor':'middle'});
-		oText.innerHTML = otherAttr.text;
+		oG.appendChild(oText2);
 		
 		oG.appendChild(oCircle);
 		oG.appendChild(oText);
-		
 		oSvg.appendChild(oG);
-		
+
 	}
-	
 	
 };
 
